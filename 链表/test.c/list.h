@@ -8,14 +8,14 @@ typedef struct Node
 {
 	int data;
 	struct Node *next;
-}Node,  *Plist;
+}Node, *Plist;
 
 void InitList(Plist plist);//≥ı ºªØ
 void InsertHead(Plist plist, int val);
 void Show(Plist plist);
-void InsertTail(Plist plist,int val);
+void InsertTail(Plist plist, int val);
 int GetLength(Plist plist);
-
+Node *LastKNode(Plist plist, int num);
 #endif
 
 

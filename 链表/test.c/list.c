@@ -3,7 +3,7 @@
 //初始化   头结点
 void InitList(Plist plist)
 {
-	if(plist == NULL)
+	if (plist == NULL)
 	{
 		return;
 	}
@@ -18,7 +18,6 @@ Node * GetNode(int val)
 	pGet->next = NULL;
 	return pGet;
 }
-
 //头插法   
 void InsertHead(Plist plist, int val)
 {
@@ -26,22 +25,24 @@ void InsertHead(Plist plist, int val)
 	pGet->next = plist->next;
 	plist->next = pGet;
 }
-void InsertTail(Plist plist,int val)
+//尾插法
+void InsertTail(Plist plist, int val)
 {
 	Node *pCur = plist;
 	Node *pGet = GetNode(val);
-	while(pCur->next != NULL)
+	while (pCur->next != NULL)
 	{
 		pCur = pCur->next;
 	}
 	pCur->next = pGet;
 }
 
+//得到长度
 int GetLength(Plist plist)
 {
 	int count = 0;
 	Node *pCur = plist->next;
-	while(pCur  != NULL)
+	while (pCur != NULL)
 	{
 		count++;
 		pCur = pCur->next;
@@ -49,18 +50,38 @@ int GetLength(Plist plist)
 	return count;
 }
 
+//打印函数
 void Show(Plist plist)
 {
 	Node *pCur = plist->next;
 
-	while(pCur != NULL)
+	while (pCur != NULL)
 	{
-		printf("%d ",pCur->data);
+		printf("%d ", pCur->data);
 		pCur = pCur->next;
 	}
 	printf("\n");
 }
-
-
+Node *LastKNode(Plist plist, int num)   //求倒数第N个节点
+{
+	int i = 2;
+	Node *p1 = plist->next;
+	Node *p2 = p1->next;
+	for (; i < num; i++)
+	{
+		if (p2->next != NULL)
+		{
+			p2 = p2->next;
+		}
+		else
+			return NULL;
+	}
+	while (p2->next != NULL)
+	{
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+	return p1;
+}
 
 

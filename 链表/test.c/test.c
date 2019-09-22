@@ -7,20 +7,27 @@ int main()
 	InitList(&head);
 
 	//插法
-	InsertTail(&head,10);
-	InsertTail(&head,20);
-	InsertTail(&head,30);
-	InsertTail(&head,40);
-	InsertTail(&head,50);
-	InsertTail(&head,60);
+	InsertTail(&head, 10);
+	InsertTail(&head, 20);
+	InsertTail(&head, 30);
+	InsertTail(&head, 40);
+	InsertTail(&head, 50);
+	InsertTail(&head, 60);
+	Node *p = LastKNode(&head, 7);
+	if (p != NULL)
+	{
+		printf("%d\n", p->data);
+	}
+	else
+		printf("无此数\n");
 	//打印
 	Show(&head);
 	//int ret = GetLength(&head);
-	printf("%d\n",GetLength(&head));
+	printf("%d\n", GetLength(&head));
 	return 0;
 }
 
- //int a,b;
+//int a,b;
 
 
 
@@ -32,7 +39,7 @@ class   struct   ???
 C/C++  区别？  static      extern     const
 typedef
 
-define 
+define
 
 C:弱类型--》
 Java:强类型
@@ -45,37 +52,37 @@ typedef struct Student
 	//struct Student student;   自引用 只能以指针的形式
 	//struct Student *pstu;
 }Student;    //stu = {"hello",99};
-void Show1(Student arr[],int len)
+void Show1(Student arr[], int len)
 {
 	int i = 0;
-	for(i = 0;i < len;i++)
+	for (i = 0; i < len; i++)
 	{
-		printf("%s,%d\n",arr[i].name,arr[i].age);
+		printf("%s,%d\n", arr[i].name, arr[i].age);
 	}
 }
-void Show2(Student *arr,int len)
+void Show2(Student *arr, int len)
 {
 	int i = 0;
-	for(i = 0;i < len;i++)
+	for (i = 0; i < len; i++)
 	{
-		printf("%s,%d\n",  (*(arr+i)).name, (arr+i)->age  );
+		printf("%s,%d\n", (*(arr + i)).name, (arr + i)->age);
 	}
 }
 void Show3(Student stu)
 {
-	printf("%s,%d\n",stu.name,stu.name);
+	printf("%s,%d\n", stu.name, stu.name);
 }
 void Show4(Student *pstu)
 {
-	printf("%s,%d\n",pstu->name,(*pstu).name);
+	printf("%s,%d\n", pstu->name, (*pstu).name);
 }
 /*
-.   :   变量.  
+.   :   变量.
 ->:   指针->
 */
 struct A
 {
-    int a;
+	int a;
 	int b;
 };
 struct B
@@ -87,7 +94,7 @@ struct B
 int main()
 {
 	struct A Aa;
-	struct B bb = {1,&Aa,{10,20}};
+	struct B bb = { 1, &Aa, { 10, 20 } };
 	bb.c;
 	bb.pa = NULL;
 	bb.pa->b;
