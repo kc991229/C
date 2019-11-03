@@ -25,21 +25,39 @@ unsigned int my_strlen1(const char *str)
 	{
 		return 0;
 	}
-	return 1+my_strlen1(str + 1);
+	return 1 + my_strlen1(str + 1);
 }
 /******************************
 函数功能：字符串拷贝函数
 入口参数：目标字符串和原字符串
 返回值：目标地址
 *******************************/
-char* my_strcpy(char *destination,const char* source)
+char* my_strcpy(char *destination, const char* source)
 {
 	char* ret = destination;
 	assert(source != NULL);
 	assert(destination != NULL);
-	while ((*destination++ = *source++)!='\0')
+	while ((*destination++ = *source++) != '\0')
 	{
 		;
+	}
+	return ret;
+}
+/******************************
+函数功能：字符串拷贝函数,,可设定数目
+入口参数：目标字符串和原字符串
+返回值：目标地址
+*******************************/
+char* my_strncpy(char* destination, const char* source, size_t count)
+{
+	char* ret = destination;
+	assert(destination);
+	assert(source);
+	while (count--)
+	{
+		*destination = *source;
+		destination++;
+		source++;
 	}
 	return ret;
 }
@@ -60,6 +78,28 @@ char* my_strcat(char* destination, const char* source)
 	while ((*destination++ = *source++) != '\0')
 	{
 		;
+	}
+	return ret;
+}
+/******************************
+函数功能：字符串追加,可设定数目
+入口参数：目标字符串和原字符串
+返回值：目标地址
+*******************************/
+char* my_strncat(char* destination, const char* source, size_t count)
+{
+	char* ret = destination;
+	assert(destination);
+	assert(source);
+	while (*destination != '\0')
+	{
+		destination++;
+	}
+	while (count--)
+	{
+		*destination = *source;
+		destination++;
+		source++;
 	}
 	return ret;
 }
@@ -86,6 +126,29 @@ int my_strcmp(const char* str1, const char* str2)
 		return 0;
 }
 /******************************
+函数功能：字符串比较,可设定数目
+入口参数：两个不可修改的字符串
+返回值：0、1、-1
+*******************************/
+int my_strncmp(const char* str1, const char* str2, size_t count)
+{
+	int num = 0;
+	assert(str1);
+	assert(str2);
+	while ((*str1) && (*str2) && count && (!(num = *(unsigned char*)str1 - *(unsigned char*)str2)))
+	{
+		str1++;
+		str2++;
+		count--;
+	}
+	if (num > 0)
+		return 1;
+	else if (num < 0)
+		return -1;
+	else
+		return 0;
+}
+/******************************
 函数功能：寻找字符串2在字符串1的地址
 入口参数：两个不可修改的字符串
 返回值：一个地址
@@ -94,9 +157,9 @@ char* my_strstr(const char* str1, const char* str2)
 {
 	assert(str1);
 	assert(str2);
-	char* cp= (char*)str1;
-	char* sub=(char*)str2;  
-	char* s1=NULL;
+	char* cp = (char*)str1;
+	char* sub = (char*)str2;
+	char* s1 = NULL;
 	if (*str2 == '\0')
 		return NULL;
 	while (*cp)
@@ -118,7 +181,7 @@ char* my_strstr(const char* str1, const char* str2)
 入口参数：一个可修改、一个不可修改的指针、长度
 返回值：一个地址
 *******************************/
-void* my_memcpy(void* dest, const void* source,unsigned int count)
+void* my_memcpy(void* dest, const void* source, unsigned int count)
 {
 	void* ret = dest;
 	assert(dest);
@@ -126,7 +189,7 @@ void* my_memcpy(void* dest, const void* source,unsigned int count)
 	while (count--)
 	{
 		*(char*)dest = *(char*)source;
-		dest=(char*)dest+1;
+		dest = (char*)dest + 1;
 		source = (char*)source + 1;
 	}
 	return ret;
