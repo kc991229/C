@@ -134,3 +134,43 @@ int removeElement(int* nums, int numsSize, int val)
 		return i + 1;
 	}
 }
+/*
+函数功能：判断回文数
+*/
+bool isPalindrome(int x)
+{
+	if (x == 0)
+		return true;
+	if (x<0 || x % 10 == 0)
+		return false;
+	long long num = x, tmp = 0;//避免溢出
+
+	//逆置一个输
+	while (num != 0)
+	{
+		tmp = tmp * 10 + num % 10;
+		num /= 10;
+	}
+	if (tmp == x)
+		return true;
+	else
+		return false;
+}
+/*
+函数功能：得到最后一个单词的长度
+*/
+int lengthOfLastWord(char * s)
+{
+	int length = strlen(s);//得到数组长度
+	int i, count = 0;
+	while (length>0 && s[length - 1] == ' ')//排除末尾是空格的情况
+		length--;
+	for (i = length - 1; i>-1; i--)
+	{
+		if (s[i] != ' ')
+			count++;
+		else
+			return count;
+	}
+	return count;
+}

@@ -3,8 +3,8 @@
 
 int main()
 {
-	int a = 10, b = 10;
-	a = b = ++b;
-	printf("%d %d", a,b);
+	char arr[] = "Hello World";
+	int count = 0;
+	count = lengthOfLastWord(arr);
 	return 0;
 }
